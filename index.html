@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donna T. | Tênis & Acessórios</title>
+
+<!--
+  ===================================================================
+  COMO EDITAR ESTE ARQUIVO (leia antes de publicar)
+  ===================================================================
+  1) PRODUTOS: procure a lista "const PRODUCTS = [...]" no <script> no
+     final do arquivo. Cada produto tem: id, nome, categoria ("feminino"
+     ou "masculino"), cor, preco, tamanhos disponíveis e descrição.
+     Os preços e nomes atuais são EXEMPLO — troque pelos reais.
+
+  2) FOTOS: cada produto usa um ícone ilustrado (placeholder) porque as
+     fotos reais recebidas mostram o desenho característico de marcas
+     registradas de terceiros (três listras, swoosh, logo "N", fivela
+     "GG" etc.), o que gera risco de uso indevido de marca num site
+     público. Os nomes dos produtos também foram trocados por nomes
+     autorais, sem citar marca ou modelo registrado.
+     Para trocar o placeholder por foto real (quando houver foto sem
+     esses elementos), troque a <div class="product-visual">...</div>
+     de cada card por: <img src="caminho-da-foto.jpg" alt="...">
+     Recomendo fotos com fundo neutro e o tênis inteiro visível.
+
+  3) WHATSAPP: o número já está configurado (11 99492-6428). Se mudar,
+     procure a constante WHATSAPP_NUMBER no <script>.
+
+  4) TROCAS: o texto de trocas abaixo usa o prazo mínimo garantido por
+     lei (7 dias, direito de arrependimento em compra online, CDC art. 49).
+     Ajuste as condições conforme a política real da loja antes de publicar.
+
+  5) HOSPEDAGEM: este é um arquivo único e estático. Funciona em qualquer
+     hospedagem gratuita de arquivos estáticos (ex: GitHub Pages, Netlify,
+     Cloudflare Pages). Basta subir este arquivo como "index.html".
+  ===================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream: #F4EBDC;
+    --paper: #FBF7EF;
+    --ink: #2A2118;
+    --ink-soft: #5C5145;
+    --gold: #AD8A55;
+    --gold-line: #C9AC7C;
+    --rose: #C79C90;
+    --divider: #E1D3BB;
+    --max: 1120px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  html, body{ overflow-x: hidden; max-width: 100%; }
+  body{
+    margin:0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{ max-width:100%; display:block; }
+
+  h1, h2, h3, .wordmark{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  button{ font-family: inherit; cursor: pointer; }
+
+  .hairline{
+    height: 1px;
+    background: var(--divider);
+    border: none;
+    margin: 0;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(244,235,220,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--divider);
+  }
+  .nav-row{
+    position: relative;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    max-width: var(--max);
+    margin: 0 auto;
+    gap: 20px;
+  }
+  .wordmark{
+    font-size: 26px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .wordmark .dot{ color: var(--rose); }
+  nav.links{
+    display:flex;
+    gap: 28px;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  nav.links a:hover{ color: var(--ink); }
+  .btn-whatsapp{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    border: none;
+    white-space: nowrap;
+  }
+  .btn-whatsapp:hover{ background: #171310; }
+  .nav-toggle{ display:none; }
+  .nav-toggle svg{ width:20px; height:20px; display:block; }
+
+  @media (max-width: 780px){
+    nav.links{ display:none; }
+    nav.links.mobile-open{
+      display:flex;
+      flex-direction:column;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--divider);
+      padding: 18px 28px;
+      gap: 16px;
+      z-index: 50;
+    }
+    .nav-toggle{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:none;
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+  }
+
+  @media (max-width: 480px){
+    .wrap{ padding: 0 22px 0 28px; }
+    .nav-row{ padding: 16px 22px 16px 28px; gap: 10px; }
+    .wordmark{ font-size: 20px; }
+    .btn-whatsapp{ padding: 8px 12px; font-size: 12.5px; }
+    .section-head h2{ font-size: 24px; }
+    .insta-left h2{ font-size: 21px; }
+    .detail-info h2{ font-size: 26px; }
+    .detail-top{ padding: 18px 22px 18px 28px; }
+    .detail-grid{ padding: 10px 22px 60px 28px; }
+    .hero{ padding-top: 36px; padding-bottom: 44px; }
+    .section{ padding-top: 48px; padding-bottom: 48px; }
+    .carousel-info{ padding: 16px 18px 20px 24px; }
+    .product-body{ padding: 14px 16px 18px 22px; }
+    .carousel-card{ width: min(280px, 72vw); }
+    .carousel-controls{ padding-right: 8px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-top: 72px;
+    padding-bottom: 56px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    color: var(--gold);
+    font-size: 15px;
+    margin-bottom: 14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .hero h1{
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.08;
+    font-style: italic;
+  }
+  .hero p.sub{
+    margin-top: 18px;
+    max-width: 46ch;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .hero-actions{
+    margin-top: 30px;
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-line{
+    border: 1px solid var(--ink);
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+  }
+  .btn-line:hover{ background: var(--ink); color: var(--paper); }
+
+  .hero-visual{
+    position: relative;
+    aspect-ratio: 1/1;
+    border: 1px solid var(--gold-line);
+    border-radius: 4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: var(--paper);
+  }
+  .hero-visual .leaf{
+    position:absolute;
+    width: 46px;
+    opacity: 0.55;
+  }
+  .hero-visual .leaf.tl{ top: 18px; left: 18px; }
+  .hero-visual .leaf.br{ bottom: 18px; right: 18px; transform: rotate(180deg); }
+
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero{ padding-top: 44px; }
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{ padding-top: 64px; padding-bottom: 64px; }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .section-head h2{
+    font-size: 30px;
+    font-style: italic;
+  }
+  .section-head .underline{
+    display:block;
+    width: 54px;
+    height: 1px;
+    background: var(--gold);
+    margin-top: 10px;
+  }
+  .section-head .hint{
+    color: var(--ink-soft);
+    font-size: 14px;
+    max-width: 34ch;
+    text-align: right;
+  }
+
+  /* ---------- CARROSSEL ---------- */
+  .carousel-shell{ position: relative; }
+  .carousel{
+    display:flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+  .carousel::-webkit-scrollbar{ display:none; }
+  .carousel-card{
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: min(320px, 78vw);
+    background: var(--paper);
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .carousel-visual{
+    aspect-ratio: 4/3.2;
+    background: linear-gradient(160deg, var(--cream), var(--paper));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom: 1px solid var(--divider);
+  }
+  .carousel-visual svg{ width: 58%; }
+  .carousel-info{ padding: 18px 20px 22px; }
+  .carousel-info .tag{
+    color: var(--gold);
+    font-size: 12.5px;
+    letter-spacing: 0.3px;
+  }
+  .carousel-info h3{
+    font-size: 21px;
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .carousel-info .price{
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .carousel-controls{
+    display:flex;
+    justify-content:flex-end;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .carousel-btn{
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-line);
+    background: transparent;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .carousel-btn:hover{ background: var(--paper); }
+  .carousel-btn svg{ width: 16px; height:16px; }
+
+  /* ---------- FILTROS / GRID ---------- */
+  .filters{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .filter-pill{
+    border: 1px solid var(--divider);
+    background: transparent;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .filter-pill.active{
+    border-color: var(--ink);
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 22px;
+  }
+  .product-card{
+    background: var(--paper);
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    overflow: hidden;
+    display:flex;
+    flex-direction:column;
+    transition: border-color .15s ease;
+  }
+  .product-card:hover{ border-color: var(--gold-line); }
+  .product-visual{
+    aspect-ratio: 1/0.9;
+    background: linear-gradient(165deg, var(--cream), var(--paper));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom: 1px solid var(--divider);
+    cursor: pointer;
+  }
+  .product-visual svg{ width: 56%; }
+  .product-body{
+    padding: 16px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    gap: 6px;
+    flex: 1;
+  }
+  .product-body .cat{
+    font-size: 11.5px;
+    letter-spacing: 0.3px;
+    color: var(--gold);
+  }
+  .product-body h3{
+    font-size: 19px;
+    font-style: italic;
+    cursor: pointer;
+  }
+  .product-body .price{ font-size: 15px; color: var(--ink-soft); margin-top: 2px;}
+  .product-body .view-btn{
+    margin-top: 12px;
+    align-self: flex-start;
+    font-size: 13.5px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+  }
+
+  /* ---------- COMO COMPRAR ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+  }
+  .step .num{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 34px;
+    color: var(--gold);
+  }
+  .step h3{
+    font-size: 19px;
+    margin-top: 6px;
+  }
+  .step p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    margin-top: 6px;
+    line-height: 1.55;
+  }
+  @media (max-width: 780px){ .steps{ grid-template-columns: 1fr; gap: 26px; } }
+
+  /* ---------- ENTREGA / TROCA ---------- */
+  .policy-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .policy-block h3{
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .policy-block p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  .edit-note{
+    display:inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--rose);
+    border: 1px dashed var(--rose);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  @media (max-width: 780px){ .policy-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- INSTAGRAM ---------- */
+  .insta-band{
+    background: var(--paper);
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+  }
+  .insta-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding-top: 46px;
+    padding-bottom: 46px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .insta-left h2{ font-size: 26px; font-style: italic; }
+  .insta-left p{ color: var(--ink-soft); font-size: 14.5px; margin-top:6px; }
+  .insta-follow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border: 1px solid var(--ink);
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+  }
+  .insta-follow:hover{ background: var(--ink); color: var(--paper); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 48px 0 40px; }
+  .footer-row{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-row .wordmark{ font-size: 22px; }
+  .footer-links{
+    display:flex;
+    gap: 22px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .footer-meta{
+    margin-top: 26px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* ---------- PRODUCT DETAIL VIEW ---------- */
+  #detail-view{
+    position: fixed;
+    inset: 0;
+    background: var(--cream);
+    z-index: 100;
+    overflow-y: auto;
+    display: none;
+  }
+  #detail-view.open{ display:block; }
+  .detail-top{
+    padding: 20px 28px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .back-btn:hover{ color: var(--ink); }
+  .detail-grid{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 10px 28px 80px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+  .detail-visual{
+    aspect-ratio: 1/0.95;
+    background: var(--paper);
+    border: 1px solid var(--gold-line);
+    border-radius: 4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow: hidden;
+  }
+  .detail-visual svg{ width: 55%; }
+  .detail-thumbs{
+    display:flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .detail-thumb{
+    width: 64px; height: 64px;
+    border-radius: 4px;
+    border: 1px solid var(--divider);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--paper);
+  }
+  .detail-thumb.active{ border-color: var(--ink); }
+  .detail-thumb img{ width:100%; height:100%; object-fit:cover; }
+  .detail-cat{ color: var(--gold); font-size: 13px; }
+  .detail-info h2{ font-size: 34px; font-style: italic; margin-top: 8px; }
+  .detail-price{ font-size: 20px; margin-top: 10px; color: var(--ink-soft); }
+  .detail-desc{ margin-top: 16px; color: var(--ink-soft); font-size: 15px; line-height: 1.65; max-width: 44ch; }
+  .detail-label{ margin-top: 28px; font-size: 13.5px; color: var(--ink-soft); }
+  .size-row{
+    display:flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .size-pill{
+    width: 46px; height: 46px;
+    border: 1px solid var(--divider);
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size: 14px;
+    background: var(--paper);
+  }
+  .size-pill.active{ border-color: var(--ink); background: var(--ink); color: var(--paper); }
+  .size-warning{
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--rose);
+    display: none;
+  }
+  .size-warning.show{ display:block; }
+  .detail-buy{
+    margin-top: 30px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-size: 15px;
+    border:none;
+  }
+  .detail-buy:hover{ background: #171310; }
+  @media (max-width: 860px){
+    .detail-grid{ grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  /* ---------- GARANTIA DE MARGEM LATERAL (sempre por último, não pode ser sobrescrita) ---------- */
+  .wrap{ padding-left: 28px; padding-right: 28px; }
+  @media (max-width: 480px){
+    .wrap{ padding-left: 28px; padding-right: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-row">
+    <a href="#top" class="wordmark">Donna t<span class="dot">.</span></a>
+    <nav class="links">
+      <a href="#catalogo" onclick="closeMobileNav()">Catálogo</a>
+      <a href="#como-comprar" onclick="closeMobileNav()">Como comprar</a>
+      <a href="#entrega" onclick="closeMobileNav()">Entrega &amp; troca</a>
+      <a href="#instagram" onclick="closeMobileNav()">Instagram</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menu" onclick="toggleMobileNav()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <button class="btn-whatsapp" onclick="openGeneralWhatsapp()">Peça pelo WhatsApp</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Santo André/SP · Tênis femininos e masculinos</div>
+        <h1>Vista-se de amor.</h1>
+        <p class="sub">Primeira linha, peças escolhidas uma a uma. Veja os modelos disponíveis aqui e finalize o pedido direto no WhatsApp, com cor, tamanho e frete confirmados no chat.</p>
+        <div class="hero-actions">
+          <a href="#catalogo" class="btn-line">Ver catálogo</a>
+          <button class="btn-line" style="background:none;border:1px solid var(--ink);" onclick="openGeneralWhatsapp()">Falar no WhatsApp</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg class="leaf tl" viewBox="0 0 60 60" fill="none" stroke="var(--gold)" stroke-width="1.2"><path d="M30 5 C15 15, 10 35, 30 55"/><path d="M30 15 C22 20, 20 30, 30 40"/></svg>
+        <img src="donna-t-logo.png" alt="Donna T. — Tênis &amp; Acessórios" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
+        <svg class="leaf br" viewBox="0 0 60 60" fill="none" stroke="var(--gold)" stroke-width="1.2"><path d="M30 5 C15 15, 10 35, 30 55"/><path d="M30 15 C22 20, 20 30, 30 40"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- CARROSSEL -->
+  <section class="section wrap">
+    <div class="section-head">
+      <div>
+        <h2>Em destaque</h2>
+        <span class="underline"></span>
+      </div>
+      <p class="hint">Uma seleção rotativa dos modelos que estão chegando agora na loja.</p>
+    </div>
+    <div class="carousel-shell">
+      <div class="carousel" id="featured-carousel"></div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollCarousel(-1)" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="carousel-btn" onclick="scrollCarousel(1)" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- CATÁLOGO -->
+  <section class="section wrap" id="catalogo">
+    <div class="section-head">
+      <div>
+        <h2>Catálogo</h2>
+        <span class="underline"></span>
+      </div>
+      <p class="hint">Toque em um modelo para ver fotos, tamanhos e finalizar no WhatsApp.</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="product-grid"></div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- COMO COMPRAR -->
+  <section class="section wrap" id="como-comprar">
+    <div class="section-head">
+      <div>
+        <h2>Como comprar</h2>
+        <span class="underline"></span>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Escolha o modelo e o tamanho</h3>
+        <p>Navegue pelo catálogo e selecione o tamanho disponível na página do tênis.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Toque em "Comprar pelo WhatsApp"</h3>
+        <p>Uma mensagem já sai pronta, com modelo, cor, tamanho e valor preenchidos.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Confirme entrega e finalize</h3>
+        <p>No WhatsApp, a gente confirma o frete (ou retirada) e fecha o pedido com você.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- ENTREGA E TROCA -->
+  <section class="section wrap" id="entrega">
+    <div class="section-head">
+      <div>
+        <h2>Entrega &amp; troca</h2>
+        <span class="underline"></span>
+      </div>
+    </div>
+    <div class="policy-grid">
+      <div class="policy-block">
+        <h3>Entrega</h3>
+        <p>Enviamos para todo o Brasil. O valor do frete e o prazo são calculados e confirmados direto no WhatsApp, de acordo com o CEP informado no pedido.</p>
+      </div>
+      <div class="policy-block">
+        <h3>Trocas</h3>
+        <p>Trocas em até 7 dias corridos após o recebimento, mediante contato pelo WhatsApp. O produto deve estar sem uso, com etiqueta e na embalagem original.</p>
+        <span class="edit-note">Confirme esta condição antes de publicar</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- INSTAGRAM -->
+<section class="insta-band" id="instagram">
+  <div class="wrap insta-inner">
+    <div class="insta-left">
+      <h2>@_donna.t</h2>
+      <p>Novidades, bastidores e feedbacks de quem já comprou.</p>
+    </div>
+    <a class="insta-follow" href="https://www.instagram.com/_donna.t/" target="_blank" rel="noopener">
+      Seguir no Instagram
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="wrap">
+  <div class="footer-row">
+    <a href="#top" class="wordmark">Donna t<span class="dot">.</span></a>
+    <div class="footer-links">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#entrega">Entrega &amp; troca</a>
+      <a href="https://www.instagram.com/_donna.t/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" onclick="openGeneralWhatsapp()">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <span>Santo André/SP</span>
+    <span>© <span id="year"></span> Donna T. Tênis &amp; Acessórios</span>
+  </div>
+</footer>
+
+<!-- PRODUCT DETAIL VIEW (SPA) -->
+<div id="detail-view">
+  <div class="detail-top">
+    <button class="back-btn" onclick="closeDetail()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 6l-6 6 6 6"/></svg>
+      Voltar ao catálogo
+    </button>
+  </div>
+  <div class="detail-grid" id="detail-content"></div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------------------------------------------------------------
+  // CONFIGURAÇÃO
+  // ---------------------------------------------------------------
+  const WHATSAPP_NUMBER = "5511994926428"; // Donna T. — 11 99492-6428
+
+  // Ícone placeholder (linha fina, dourado) — troque por <img> quando
+  // tiver as fotos reais de cada tênis.
+  function shoeIcon(){
+    return `<svg viewBox="0 0 200 140" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 95 Q20 70 45 62 Q70 55 95 60 L150 60 Q175 60 182 85 L182 100 L15 100 Z"/>
+      <path d="M45 62 L55 85 L95 82" />
+      <line x1="15" y1="100" x2="182" y2="100"/>
+    </svg>`;
+  }
+
+  // ---------------------------------------------------------------
+  // PRODUTOS — EXEMPLO. Troque nome, preço, cor e descrição pelos reais.
+  // ---------------------------------------------------------------
+  // Nomes autorais, sem marca ou modelo registrado de terceiros.
+  // Fotos ainda não entraram porque as originais mostram o desenho
+  // característico de marcas registradas (listras, swoosh, logo, fivela).
+  // Assim que houver fotos sem esses elementos, troque o placeholder
+  // shoeIcon() de cada card por <img src="...">.
+  // Campo "images": lista de arquivos de foto do produto (ângulos/cores
+  // diferentes). Já deixei os nomes sugeridos, na quantidade que você
+  // pediu para cada produto. Enquanto um arquivo não existir na pasta,
+  // ele simplesmente não aparece (não quebra a página).
+  // IMPORTANTE: use só o nome do arquivo (ex: "papete-trancada-1.jpg"),
+  // nunca o caminho completo do seu computador (ex: "C:\Users\...").
+  // O arquivo tem que estar salvo na MESMA PASTA deste HTML.
+  // Campo "type": categoria do calçado, usada no filtro combinado com o
+  // gênero (cat). Valores aceitos: "sandalia", "tenis", "sapato", "outro".
+  const PRODUCTS = [
+    { id: 1, name: "Papete Trançada", cat: "feminino", type: "sandalia", color: "Bege / caramelo", price: 189.90, sizes: [34,35,36,37,38,39], desc: "Papete de tiras trançadas com fivela, conforto para o dia a dia.",
+      images: ["papete-trancada-1.jpeg.jpeg","papete-trancada-2.jpg.jpeg"] },
+    { id: 2, name: "Runner Rosé", cat: "feminino", type: "tenis", color: "Disponível em preto, rosé, off-white e marrom", price: 149.90, sizes: [34,35,36,37,38,39,40], desc: "Tênis de corrida leve, cabedal respirável e solado macio.",
+      images: ["nike fit branco.jpeg","nike fit marrom.jpeg","nike fit preto.jpeg","nike fit rosa.jpeg"] },
+    { id: 3, name: "Listrado Retrô", cat: "feminino", type: "tenis", color: "Disponível em off-white, creme, marrom e azul", price: 179.90, sizes: [34,35,36,37,38,39], desc: "Tênis casual com três listras laterais e solado gomado estilo retrô.",
+      images: ["samba azul e branco.jpeg","samba bege.jpeg","samba branco e marrom.jpeg","samba branco.jpeg","samba marrom.jpeg","samba rosa.jpeg"] },
+    { id: 4, name: "Chunky Duna", cat: "feminino", type: "tenis", color: "Bege / off-white", price: 269.90, sizes: [34,35,36,37,38,39], desc: "Tênis chunky bege com detalhes em couro, visual street.",
+      images: ["new balance bege.jpeg","new balance branco e cinza.jpeg","new balance branco.jpeg"] },
+    { id: 5, name: "Chunky Terracota", cat: "feminino", type: "tenis", color: "Marrom / terracota", price: 249.90, sizes: [34,35,36,37,38,39], desc: "Tênis chunky em tons terrosos, solado alto e robusto.",
+      images: ["New balance 9060 branco e rosa.jpeg","new balance 9060 branco.jpeg","new balance 9060 marrom escuro.jpeg","new balance 9060 marrom.jpeg"] },
+    { id: 6, name: "Trançado Vintage", cat: "feminino", type: "tenis", color: "Disponível em azul-marinho, branco, marrom e azul/bege", price: 189.90, sizes: [34,35,36,37,38,39], desc: "Tênis casual retrô com textura trançada na lateral.",
+      images: ["adidas gazelle azul e bege.jpeg","adidas gazelle azul e branco.jpeg","adidas gazelle azul marinho.jpeg","adidas gazelle marrom.jpeg","adidas gazelle rosa escuro.jpeg","adidas gazelle rosa.jpeg","adidas gazelle vermelho.jpeg"] },
+    { id: 7, name: "Sandália Trançada Premium", cat: "feminino", type: "sandalia", color: "Disponível em caramelo, preto, preto/branco e branco", price: 249.90, sizes: [34,35,36,37,38,39], desc: "Sandália rasteira trançada com fivela metálica.",
+      images: ["sandalia gucci branco.jpeg","sandalia gucci marrom.jpeg","sandalia gucci preto.jpeg"] }
+  ];
+
+  // Rótulos do filtro combinado (tipo + gênero). Ajuste aqui se cadastrar
+  // um tipo novo de calçado.
+  const TYPE_META = {
+    sandalia: { label: "Sandália", fem: "feminina", masc: "masculina" },
+    tenis: { label: "Tênis", fem: "feminino", masc: "masculino" },
+    sapato: { label: "Sapato", fem: "feminino", masc: "masculino" },
+    outro: { label: "Outro", fem: "feminino", masc: "masculino" }
+  };
+
+  // Guarda o ícone placeholder pronto, para usar como fallback.
+  const SHOE_ICON_HTML = shoeIcon();
+
+  // Foto de capa (primeira da lista) para carrossel e card do catálogo.
+  // Se o arquivo não existir ainda, cai para o ícone placeholder.
+  function productVisual(p){
+    const first = p.images && p.images[0];
+    if(!first) return SHOE_ICON_HTML;
+    return `<img src="${first}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML=SHOE_ICON_HTML;">`;
+  }
+
+  const fmtPrice = v => "R$ " + v.toFixed(2).replace(".", ",");
+
+  // ---------------------------------------------------------------
+  // WHATSAPP
+  // ---------------------------------------------------------------
+  function openGeneralWhatsapp(){
+    const msg = "Olá! Vim do site da Donna T. e queria saber mais sobre os tênis 🤍";
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+  }
+
+  function toggleMobileNav(){
+    const nav = document.querySelector('header.site-nav nav.links');
+    if(!nav) return;
+    nav.classList.toggle('mobile-open');
+  }
+  function closeMobileNav(){
+    const nav = document.querySelector('header.site-nav nav.links');
+    if(nav) nav.classList.remove('mobile-open');
+  }
+
+  function openProductWhatsapp(product, size){
+    const msg =
+`Olá! Quero comprar este tênis:
+
+Modelo: ${product.name}
+Cor: ${product.color}
+Tamanho: ${size}
+Valor: ${fmtPrice(product.price)}
+
+Gostaria de confirmar a forma de entrega e o valor do frete. 🤍`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+  }
+
+  // ---------------------------------------------------------------
+  // RENDER: CARROSSEL (um card de cada modelo cadastrado)
+  // ---------------------------------------------------------------
+  // Cada produto já representa um modelo diferente, então o carrossel
+  // mostra a lista inteira. Se um dia dois produtos forem o mesmo
+  // modelo (só cor diferente), dá pra filtrar por nome/tipo aqui antes
+  // de exibir, pra não repetir modelo no carrossel.
+  function renderCarousel(){
+    const el = document.getElementById('featured-carousel');
+    el.innerHTML = PRODUCTS.map(p => `
+      <div class="carousel-card" onclick="openDetail(${p.id})">
+        <div class="carousel-visual">${productVisual(p)}</div>
+        <div class="carousel-info">
+          <div class="tag">${p.cat === 'feminino' ? 'Feminino' : 'Masculino'}</div>
+          <h3>${p.name}</h3>
+          <div class="price">${fmtPrice(p.price)}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function scrollCarousel(dir){
+    const el = document.getElementById('featured-carousel');
+    if(!el) return;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    let target = el.scrollLeft + dir * 340;
+    if(target >= maxScroll - 5) target = 0;
+    if(target < 0) target = maxScroll;
+    el.scrollTo({ left: target, behavior: 'smooth' });
+  }
+
+  // ---------------------------------------------------------------
+  // CARROSSEL: AUTOPLAY (avança sozinho, pausa se o mouse estiver em cima)
+  // ---------------------------------------------------------------
+  let carouselTimer = null;
+  const CAROUSEL_INTERVAL_MS = 4000;
+
+  function startCarouselAutoplay(){
+    stopCarouselAutoplay();
+    carouselTimer = setInterval(() => scrollCarousel(1), CAROUSEL_INTERVAL_MS);
+  }
+
+  function stopCarouselAutoplay(){
+    if(carouselTimer){ clearInterval(carouselTimer); carouselTimer = null; }
+  }
+
+  // ---------------------------------------------------------------
+  // FILTROS (combinam tipo + gênero, ex: "Sandália feminina")
+  // ---------------------------------------------------------------
+  // Monta o filtro sozinho a partir do que existe em PRODUCTS, então
+  // cadastrar um produto novo com tipo/gênero diferente já cria o pill
+  // do filtro automaticamente, sem precisar editar esta lista na mão.
+  function filterKey(p){ return `${p.type}|${p.cat}`; }
+
+  function filterLabel(type, cat){
+    const meta = TYPE_META[type] || TYPE_META.outro;
+    return `${meta.label} ${cat === 'feminino' ? meta.fem : meta.masc}`;
+  }
+
+  function renderFilters(){
+    const el = document.getElementById('filters');
+    const seen = new Map();
+    PRODUCTS.forEach(p => {
+      const key = filterKey(p);
+      if(!seen.has(key)) seen.set(key, { type: p.type, cat: p.cat });
+    });
+    const pills = [`<button class="filter-pill active" data-filter="todos">Todos</button>`];
+    seen.forEach((v, key) => {
+      pills.push(`<button class="filter-pill" data-filter="${key}">${filterLabel(v.type, v.cat)}</button>`);
+    });
+    el.innerHTML = pills.join('');
+  }
+
+  // ---------------------------------------------------------------
+  // RENDER: GRID / CATÁLOGO
+  // ---------------------------------------------------------------
+  let currentFilter = 'todos';
+
+  function renderGrid(){
+    const el = document.getElementById('product-grid');
+    const list = currentFilter === 'todos' ? PRODUCTS : PRODUCTS.filter(p => filterKey(p) === currentFilter);
+    el.innerHTML = list.map(p => `
+      <div class="product-card">
+        <div class="product-visual" onclick="openDetail(${p.id})">${productVisual(p)}</div>
+        <div class="product-body">
+          <div class="cat">${p.cat === 'feminino' ? 'Feminino' : 'Masculino'}</div>
+          <h3 onclick="openDetail(${p.id})">${p.name}</h3>
+          <div class="price">${fmtPrice(p.price)}</div>
+          <span class="view-btn" onclick="openDetail(${p.id})">Ver detalhes</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('filters').addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-pill');
+    if(!btn) return;
+    document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderGrid();
+  });
+
+  // ---------------------------------------------------------------
+  // PÁGINA INDIVIDUAL DO PRODUTO (view dentro do mesmo arquivo)
+  // ---------------------------------------------------------------
+  let selectedSize = null;
+
+  function openDetail(id){
+    const p = PRODUCTS.find(x => x.id === id);
+    if(!p) return;
+    selectedSize = null;
+
+    const sizesHtml = p.sizes.map(s => `
+      <button class="size-pill" data-size="${s}" onclick="selectSize(${id}, ${s})">${s}</button>
+    `).join('');
+
+    const imgs = (p.images && p.images.length) ? p.images : [];
+    const thumbsHtml = imgs.length > 1 ? `
+      <div class="detail-thumbs" id="detail-thumbs">
+        ${imgs.map((src,i) => `
+          <div class="detail-thumb ${i===0?'active':''}" data-index="${i}" onclick="setDetailImage(${id},${i})">
+            <img src="${src}" alt="${p.name} foto ${i+1}" onerror="this.parentElement.style.display='none';">
+          </div>
+        `).join('')}
+      </div>` : '';
+
+    document.getElementById('detail-content').innerHTML = `
+      <div>
+        <div class="detail-visual" id="detail-main-visual">${productVisual(p)}</div>
+        ${thumbsHtml}
+      </div>
+      <div>
+        <div class="detail-cat">${p.cat === 'feminino' ? 'Feminino' : 'Masculino'} · ${p.color}</div>
+        <h2>${p.name}</h2>
+        <div class="detail-price">${fmtPrice(p.price)}</div>
+        <p class="detail-desc">${p.desc}</p>
+        <div class="detail-label">Selecione o tamanho</div>
+        <div class="size-row" id="size-row">${sizesHtml}</div>
+        <div class="size-warning" id="size-warning">Selecione um tamanho para continuar.</div>
+        <button class="detail-buy" onclick="confirmPurchase(${id})">Comprar pelo WhatsApp</button>
+      </div>
+    `;
+    document.getElementById('detail-view').classList.add('open');
+    window.scrollTo(0,0);
+  }
+
+  function setDetailImage(id, index){
+    const p = PRODUCTS.find(x => x.id === id);
+    if(!p || !p.images || !p.images[index]) return;
+    document.getElementById('detail-main-visual').innerHTML =
+      `<img src="${p.images[index]}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML=SHOE_ICON_HTML;">`;
+    document.querySelectorAll('#detail-thumbs .detail-thumb').forEach(t => {
+      t.classList.toggle('active', Number(t.dataset.index) === index);
+    });
+  }
+
+  function selectSize(id, size){
+    selectedSize = size;
+    document.querySelectorAll('#size-row .size-pill').forEach(b => {
+      b.classList.toggle('active', Number(b.dataset.size) === size);
+    });
+    document.getElementById('size-warning').classList.remove('show');
+  }
+
+  function confirmPurchase(id){
+    const p = PRODUCTS.find(x => x.id === id);
+    if(!selectedSize){
+      document.getElementById('size-warning').classList.add('show');
+      return;
+    }
+    openProductWhatsapp(p, selectedSize);
+  }
+
+  function closeDetail(){
+    document.getElementById('detail-view').classList.remove('open');
+  }
+
+  // ---------------------------------------------------------------
+  // INIT
+  // ---------------------------------------------------------------
+  renderCarousel();
+  renderFilters();
+  renderGrid();
+  startCarouselAutoplay();
+
+  const carouselShell = document.querySelector('.carousel-shell');
+  if(carouselShell){
+    carouselShell.addEventListener('mouseenter', stopCarouselAutoplay);
+    carouselShell.addEventListener('mouseleave', startCarouselAutoplay);
+  }
+</script>
+
+</body>
+</html>
