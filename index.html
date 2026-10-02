@@ -57,8 +57,7 @@
 
   *{ box-sizing: border-box; }
   html{ scroll-behavior: smooth; }
-  html, body{ max-width: 100%; }
-  body{ overflow-x: clip; }
+  html, body{ overflow-x: hidden; max-width: 100%; }
   body{
     margin:0;
     background: var(--cream);
@@ -169,22 +168,21 @@
   }
 
   @media (max-width: 480px){
-    .wrap{ padding: 0 20px; }
-    .nav-row{ padding: 14px 20px; gap: 10px; }
+    .wrap{ padding: 0 22px 0 28px; }
+    .nav-row{ padding: 16px 22px 16px 28px; gap: 10px; }
     .wordmark{ font-size: 20px; }
     .btn-whatsapp{ padding: 8px 12px; font-size: 12.5px; }
     .section-head h2{ font-size: 24px; }
     .insta-left h2{ font-size: 21px; }
     .detail-info h2{ font-size: 26px; }
-    .detail-top{ padding: 18px 20px; }
-    .detail-grid{ padding: 10px 20px 60px; }
+    .detail-top{ padding: 18px 22px 18px 28px; }
+    .detail-grid{ padding: 10px 22px 60px 28px; }
     .hero{ padding-top: 36px; padding-bottom: 44px; }
     .section{ padding-top: 48px; padding-bottom: 48px; }
-    .carousel-info{ padding: 16px 18px 20px; }
-    .product-body{ padding: 14px 16px 18px; }
+    .carousel-info{ padding: 16px 18px 20px 24px; }
+    .product-body{ padding: 14px 16px 18px 22px; }
     .carousel-card{ width: min(280px, 72vw); }
-    .carousel-controls{ padding-right: 0; }
-    .footer-links{ flex-wrap: wrap; gap: 12px 18px; }
+    .carousel-controls{ padding-right: 8px; }
   }
 
   /* ---------- HERO ---------- */
@@ -507,7 +505,6 @@
   .footer-row .wordmark{ font-size: 22px; }
   .footer-links{
     display:flex;
-    flex-wrap: wrap;
     gap: 22px;
     font-size: 14px;
     color: var(--ink-soft);
@@ -627,12 +624,7 @@
   /* ---------- GARANTIA DE MARGEM LATERAL (sempre por último, não pode ser sobrescrita) ---------- */
   .wrap{ padding-left: 28px; padding-right: 28px; }
   @media (max-width: 480px){
-    .wrap{ padding-left: 20px; padding-right: 20px; }
-    .section-head .hint{ text-align: left; max-width: none; }
-  }
-  @media (max-width: 360px){
-    .btn-whatsapp{ padding: 8px 10px; font-size: 12px; }
-    .wordmark{ font-size: 19px; }
+    .wrap{ padding-left: 28px; padding-right: 22px; }
   }
 </style>
 </head>
@@ -846,19 +838,19 @@
   // Campo "type": categoria do calçado, usada no filtro combinado com o
   // gênero (cat). Valores aceitos: "sandalia", "tenis", "sapato", "outro".
   const PRODUCTS = [
-    { id: 1, name: "Papete Trançada", cat: "feminino", type: "sandalia", color: "Bege / caramelo", price: 189.90, sizes: [34,35,36,37,38,39], desc: "Papete de tiras trançadas com fivela, conforto para o dia a dia.",
+    { id: 1, name: "Papete Miu Miu", cat: "feminino", type: "sandalia", color: "Bege / caramelo", price: 189.90, sizes: [34,35,36,37,38,39], desc: "Papete de tiras trançadas com fivela, conforto para o dia a dia.",
       images: ["papete-trancada-1.jpeg.jpeg","papete-trancada-2.jpg.jpeg"] },
-    { id: 2, name: "Runner Rosé", cat: "feminino", type: "tenis", color: "Disponível em preto, rosé, off-white e marrom", price: 149.90, sizes: [34,35,36,37,38,39,40], desc: "Tênis de corrida leve, cabedal respirável e solado macio.",
+    { id: 2, name: "Nike Fit", cat: "feminino", type: "tenis", color: "Disponível em preto, rosé, off-white e marrom", price: 149.90, sizes: [34,35,36,37,38,39,40], desc: "Tênis de corrida leve, cabedal respirável e solado macio.",
       images: ["nike fit branco.jpeg","nike fit marrom.jpeg","nike fit preto.jpeg","nike fit rosa.jpeg"] },
-    { id: 3, name: "Listrado Retrô", cat: "feminino", type: "tenis", color: "Disponível em off-white, creme, marrom e azul", price: 179.90, sizes: [34,35,36,37,38,39], desc: "Tênis casual com três listras laterais e solado gomado estilo retrô.",
+    { id: 3, name: "Adidas Samba", cat: "feminino", type: "tenis", color: "Disponível em off-white, creme, marrom e azul", price: 179.90, sizes: [34,35,36,37,38,39], desc: "Tênis casual com três listras laterais e solado gomado estilo retrô.",
       images: ["samba azul e branco.jpeg","samba bege.jpeg","samba branco e marrom.jpeg","samba branco.jpeg","samba marrom.jpeg","samba rosa.jpeg"] },
-    { id: 4, name: "Chunky Duna", cat: "feminino", type: "tenis", color: "Bege / off-white", price: 269.90, sizes: [34,35,36,37,38,39], desc: "Tênis chunky bege com detalhes em couro, visual street.",
+    { id: 4, name: "New Balance", cat: "feminino", type: "tenis", color: "Bege / off-white", price: 269.90, sizes: [34,35,36,37,38,39], desc: "Tênis chunky bege com detalhes em couro, visual street.",
       images: ["new balance bege.jpeg","new balance branco e cinza.jpeg","new balance branco.jpeg"] },
-    { id: 5, name: "Chunky Terracota", cat: "feminino", type: "tenis", color: "Marrom / terracota", price: 249.90, sizes: [34,35,36,37,38,39], desc: "Tênis chunky em tons terrosos, solado alto e robusto.",
+    { id: 5, name: "New Balance 9060", cat: "feminino", type: "tenis", color: "Marrom / terracota", price: 249.90, sizes: [34,35,36,37,38,39], desc: "Tênis chunky em tons terrosos, solado alto e robusto.",
       images: ["New balance 9060 branco e rosa.jpeg","new balance 9060 branco.jpeg","new balance 9060 marrom escuro.jpeg","new balance 9060 marrom.jpeg"] },
-    { id: 6, name: "Trançado Vintage", cat: "feminino", type: "tenis", color: "Disponível em azul-marinho, branco, marrom e azul/bege", price: 189.90, sizes: [34,35,36,37,38,39], desc: "Tênis casual retrô com textura trançada na lateral.",
+    { id: 6, name: "Adidas Gazelle", cat: "feminino", type: "tenis", color: "Disponível em azul-marinho, branco, marrom e azul/bege", price: 189.90, sizes: [34,35,36,37,38,39], desc: "Tênis casual retrô com textura trançada na lateral.",
       images: ["adidas gazelle azul e bege.jpeg","adidas gazelle azul e branco.jpeg","adidas gazelle azul marinho.jpeg","adidas gazelle marrom.jpeg","adidas gazelle rosa escuro.jpeg","adidas gazelle rosa.jpeg","adidas gazelle vermelho.jpeg"] },
-    { id: 7, name: "Sandália Trançada Premium", cat: "feminino", type: "sandalia", color: "Disponível em caramelo, preto, preto/branco e branco", price: 249.90, sizes: [34,35,36,37,38,39], desc: "Sandália rasteira trançada com fivela metálica.",
+    { id: 7, name: "Sandália Gucci", cat: "feminino", type: "sandalia", color: "Disponível em caramelo, preto, preto/branco e branco", price: 249.90, sizes: [34,35,36,37,38,39], desc: "Sandália rasteira trançada com fivela metálica.",
       images: ["sandalia gucci branco.jpeg","sandalia gucci marrom.jpeg","sandalia gucci preto.jpeg"] }
   ];
 
